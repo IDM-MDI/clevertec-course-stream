@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class Main {
+    private static final String JAPANESE = "Japanese";
     public static void main(String[] args) throws IOException {
         task1();
         task2();
@@ -38,7 +39,11 @@ public class Main {
     }
 
     private static void task2() throws IOException {
-        List<Animal> animals = Util.getAnimals();
+        Util.getAnimals()
+                .stream()
+                .filter(i -> i.getOrigin().equals(JAPANESE))
+                .peek(i -> i.setBread(i.getBread().toUpperCase()))
+                .forEach(System.out::println);
         //        animals.stream() Продолжить ...
 
     }
