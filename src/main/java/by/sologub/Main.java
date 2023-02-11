@@ -18,6 +18,7 @@ public class Main {
     private static final String FEMALE = "Female";
     private static final String HUNGARIAN = "Hungarian";
     private static final String JAPANESE = "Japanese";
+    private static final String INDONESIAN = "Indonesian";
     public static void main(String[] args) throws IOException {
         task1();
         task2();
@@ -124,8 +125,12 @@ public class Main {
     }
 
     private static void task11() throws IOException {
-        List<Animal> animals = Util.getAnimals();
-        //        animals.stream() Продолжить ...
+        Util.getAnimals()
+                .stream()
+                .filter(animal -> animal.getOrigin().equals(INDONESIAN))
+                .mapToInt(Animal::getAge)
+                .average()
+                .ifPresent(System.out::println);
     }
 
     private static void task12() throws IOException {
