@@ -5,15 +5,20 @@ import by.sologub.model.Car;
 import by.sologub.model.Flower;
 import by.sologub.model.House;
 import by.sologub.model.Person;
+import by.sologub.util.DateCalculator;
 import by.sologub.util.Util;
+import by.sologub.validator.AgeValidator;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
 public class Main {
+    private static final String MALE = "Male";
     public static void main(String[] args) throws IOException {
         task1();
         task2();
@@ -90,7 +95,13 @@ public class Main {
     }
 
     private static void task12() throws IOException {
-        List<Person> people = Util.getPersons();
+        Util.getPersons()
+                .stream()
+                .filter(person -> person.getGender().equals(MALE))
+                .filter(person -> AgeValidator.isAgeValidToFranceLegion(person.getDateOfBirth()))
+                .sorted(Comparator.comparing(Person::getRecruitmentGroup))
+                .limit(200)
+                .forEach(System.out::println);
 //        Продолжить...
     }
 
