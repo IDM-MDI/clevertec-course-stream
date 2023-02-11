@@ -8,13 +8,13 @@ import by.sologub.model.Person;
 import by.sologub.util.Util;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Main {
     private static final String HUNGARIAN = "Hungarian";
+    private static final String JAPANESE = "Japanese";
+    private static final String FEMALE = "Female";
     public static void main(String[] args) throws IOException {
         task1();
         task2();
@@ -34,25 +34,41 @@ public class Main {
     }
 
     private static void task1() throws IOException {
-        List<Animal> animals = Util.getAnimals();
-        //        animals.stream() Продолжить ...
+        Util.getAnimals()
+                .stream()
+                .filter(i -> i.getAge() > 10 && i.getAge() < 20)
+                .sorted(Comparator.comparing(Animal::getAge).reversed())
+                .toList()
+                .subList(14,21)
+                .forEach(System.out::println);
     }
 
     private static void task2() throws IOException {
-        List<Animal> animals = Util.getAnimals();
-        //        animals.stream() Продолжить ...
-
+        Util.getAnimals()
+                .stream()
+                .filter(i -> i.getOrigin().equals(JAPANESE))
+                .map(Animal::getBread)
+                .map(String::toUpperCase)
+                .forEach(System.out::println);
     }
 
     private static void task3() throws IOException {
-        List<Animal> animals = Util.getAnimals();
-        //        animals.stream() Продолжить ...
+        Util.getAnimals()
+                .stream()
+                .filter(animal -> animal.getAge() > 30)
+                .map(Animal::getOrigin)
+                .filter(origin -> origin.startsWith("A"))
+                .distinct()
+                .forEach(System.out::println);
     }
 
     private static void task4() throws IOException {
-        List<Animal> animals = Util.getAnimals();
-        //        animals.stream() Продолжить ...
-
+        System.out.println(
+                Util.getAnimals()
+                .stream()
+                .filter(animal -> animal.getGender().equals(FEMALE))
+                .count()
+        );
     }
 
     private static void task5() throws IOException {
