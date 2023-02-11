@@ -44,7 +44,13 @@ public class Main {
     }
 
     private static void task3() throws IOException {
-        List<Animal> animals = Util.getAnimals();
+        Util.getAnimals()
+                .stream()
+                .filter(animal -> animal.getAge() > 30)
+                .map(Animal::getOrigin)
+                .filter(origin -> origin.startsWith("A"))
+                .distinct()
+                .forEach(System.out::println);
         //        animals.stream() Продолжить ...
     }
 
