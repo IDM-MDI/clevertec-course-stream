@@ -121,7 +121,6 @@ public class Main {
                 .mapToInt(Animal::getAge)
                 .sum();
         System.out.println(result);
-        //        animals.stream() Продолжить ...
     }
 
     private static void task11() throws IOException {
