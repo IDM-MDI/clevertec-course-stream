@@ -52,8 +52,6 @@ public class Main {
                 .map(Animal::getBread)
                 .map(String::toUpperCase)
                 .forEach(System.out::println);
-        //        animals.stream() Продолжить ...
-
     }
 
     private static void task3() throws IOException {
