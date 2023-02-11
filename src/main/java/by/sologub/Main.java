@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class Main {
+    private static final String HUNGARIAN = "Hungarian";
     public static void main(String[] args) throws IOException {
         task1();
         task2();
@@ -55,8 +56,11 @@ public class Main {
     }
 
     private static void task5() throws IOException {
-        List<Animal> animals = Util.getAnimals();
-        //        animals.stream() Продолжить ...
+        boolean result = Util.getAnimals()
+                .stream()
+                .filter(animal -> animal.getAge() >= 20 && animal.getAge() <= 30)
+                .anyMatch(animal -> animal.getOrigin().equals(HUNGARIAN));
+        System.out.println(result);
     }
 
     private static void task6() throws IOException {
