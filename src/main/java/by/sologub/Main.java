@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class Main {
+    private static final String OCEANIA = "Oceania";
     public static void main(String[] args) throws IOException {
         task1();
         task2();
@@ -65,7 +66,10 @@ public class Main {
     }
 
     private static void task7() throws IOException {
-        List<Animal> animals = Util.getAnimals();
+        boolean result = Util.getAnimals()
+                .stream()
+                .noneMatch(animal -> animal.getOrigin().equals(OCEANIA));
+        System.out.println(result);
         //        animals.stream() Продолжить ...
     }
 
