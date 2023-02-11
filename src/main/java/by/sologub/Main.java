@@ -12,6 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Main {
+    private static final String OCEANIA = "Oceania";
     private static final String MALE = "Male";
     private static final String FEMALE = "Female";
     private static final String HUNGARIAN = "Hungarian";
@@ -88,8 +89,10 @@ public class Main {
     }
 
     private static void task7() throws IOException {
-        List<Animal> animals = Util.getAnimals();
-        //        animals.stream() Продолжить ...
+        boolean result = Util.getAnimals()
+                .stream()
+                .noneMatch(animal -> animal.getOrigin().equals(OCEANIA));
+        System.out.println(result);
     }
 
     private static void task8() throws IOException {
