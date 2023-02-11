@@ -154,7 +154,6 @@ public class Main {
                 .flatMap(house -> house.getPersonList().stream())
                 .filter(person -> true)
                 .limit(500);
-        //        Продолжить...
     }
 
     private static void task14() throws IOException {
