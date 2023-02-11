@@ -33,7 +33,11 @@ public class Main {
     }
 
     private static void task1() throws IOException {
-        List<Animal> animals = Util.getAnimals();
+        Util.getAnimals()
+                .stream()
+                .filter(i -> i.getAge() > 10 && i.getAge() < 20)
+                .sorted(Comparator.comparing(Animal::getAge).reversed())
+                .forEach(System.out::println);
         //        animals.stream() Продолжить ...
     }
 
