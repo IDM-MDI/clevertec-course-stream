@@ -51,7 +51,6 @@ public class Main {
                 .filter(origin -> origin.startsWith("A"))
                 .distinct()
                 .forEach(System.out::println);
-        //        animals.stream() Продолжить ...
     }
 
     private static void task4() throws IOException {
