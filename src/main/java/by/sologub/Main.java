@@ -8,6 +8,7 @@ import by.sologub.model.Person;
 import by.sologub.util.Util;
 
 import java.io.IOException;
+import java.rmi.NoSuchObjectException;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
@@ -70,7 +71,14 @@ public class Main {
     }
 
     private static void task8() throws IOException {
-        List<Animal> animals = Util.getAnimals();
+        int age = Util.getAnimals()
+                .stream()
+                .sorted(Comparator.comparing(Animal::getBread))
+                .limit(100)
+                .mapToInt(Animal::getAge)
+                .max()
+                .orElseThrow(() -> new NoSuchObjectException("Object not found"));
+        System.out.println(age);
         //        animals.stream() Продолжить ...
     }
 
