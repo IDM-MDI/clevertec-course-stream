@@ -75,8 +75,11 @@ public class Main {
     }
 
     private static void task9() throws IOException {
-        List<Animal> animals = Util.getAnimals();
-        //        animals.stream() Продолжить ...
+        Util.getAnimals()
+                .stream()
+                .map(Animal::getBread)
+                .map(String::toCharArray)
+                .forEach(System.out::println);
     }
 
     private static void task10() throws IOException {
