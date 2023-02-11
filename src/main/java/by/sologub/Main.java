@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class Main {
+    private static final String INDONESIAN = "Indonesian";
     public static void main(String[] args) throws IOException {
         task1();
         task2();
@@ -85,7 +86,12 @@ public class Main {
     }
 
     private static void task11() throws IOException {
-        List<Animal> animals = Util.getAnimals();
+        Util.getAnimals()
+                .stream()
+                .filter(animal -> animal.getOrigin().equals(INDONESIAN))
+                .mapToInt(Animal::getAge)
+                .average()
+                .ifPresent(System.out::println);
         //        animals.stream() Продолжить ...
     }
 
