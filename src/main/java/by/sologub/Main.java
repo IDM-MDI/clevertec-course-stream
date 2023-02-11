@@ -95,7 +95,11 @@ public class Main {
     }
 
     private static void task13() throws IOException {
-        List<House> houses = Util.getHouses();
+        Util.getHouses()
+                .stream()
+                .flatMap(house -> house.getPersonList().stream())
+                .filter(person -> true)
+                .limit(500);
         //        Продолжить...
     }
 
