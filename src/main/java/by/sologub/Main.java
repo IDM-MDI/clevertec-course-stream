@@ -8,15 +8,12 @@ import by.sologub.model.Person;
 import by.sologub.util.Util;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class Main {
     private static final String JAPANESE = "Japanese";
+    private static final String FEMALE = "Female";
     public static void main(String[] args) throws IOException {
         task1();
         task2();
@@ -65,9 +62,12 @@ public class Main {
     }
 
     private static void task4() throws IOException {
-        List<Animal> animals = Util.getAnimals();
-        //        animals.stream() Продолжить ...
-
+        System.out.println(
+                Util.getAnimals()
+                .stream()
+                .filter(animal -> animal.getGender().equals(FEMALE))
+                .count()
+        );
     }
 
     private static void task5() throws IOException {
