@@ -42,7 +42,8 @@ public class Main {
         Util.getAnimals()
                 .stream()
                 .filter(i -> i.getOrigin().equals(JAPANESE))
-                .peek(i -> i.setBread(i.getBread().toUpperCase()))
+                .map(Animal::getBread)
+                .map(String::toUpperCase)
                 .forEach(System.out::println);
         //        animals.stream() Продолжить ...
 
