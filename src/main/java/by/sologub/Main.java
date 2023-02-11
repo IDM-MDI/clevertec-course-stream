@@ -12,6 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Main {
+    private static final String HUNGARIAN = "Hungarian";
     private static final String JAPANESE = "Japanese";
     private static final String FEMALE = "Female";
     public static void main(String[] args) throws IOException {
@@ -71,8 +72,11 @@ public class Main {
     }
 
     private static void task5() throws IOException {
-        List<Animal> animals = Util.getAnimals();
-        //        animals.stream() Продолжить ...
+        boolean result = Util.getAnimals()
+                .stream()
+                .filter(animal -> animal.getAge() >= 20 && animal.getAge() <= 30)
+                .anyMatch(animal -> animal.getOrigin().equals(HUNGARIAN));
+        System.out.println(result);
     }
 
     private static void task6() throws IOException {
