@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Main {
@@ -37,8 +39,9 @@ public class Main {
                 .stream()
                 .filter(i -> i.getAge() > 10 && i.getAge() < 20)
                 .sorted(Comparator.comparing(Animal::getAge).reversed())
+                .toList()
+                .subList(14,21)
                 .forEach(System.out::println);
-        //        animals.stream() Продолжить ...
     }
 
     private static void task2() throws IOException {
