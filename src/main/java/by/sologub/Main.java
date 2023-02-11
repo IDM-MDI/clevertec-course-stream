@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class Main {
+    private static final String MALE = "Male";
+    private static final String FEMALE = "Female";
     public static void main(String[] args) throws IOException {
         task1();
         task2();
@@ -60,7 +62,10 @@ public class Main {
     }
 
     private static void task6() throws IOException {
-        List<Animal> animals = Util.getAnimals();
+        boolean result = Util.getAnimals()
+                .stream()
+                .allMatch(animal -> animal.getGender().equals(MALE) || animal.getGender().equals(FEMALE));
+        System.out.println(result);
         //        animals.stream() Продолжить ...
     }
 
