@@ -25,8 +25,14 @@ import static by.ishangulyev.model.ModelFieldValue.HOSPITAL;
 import static by.ishangulyev.model.ModelFieldValue.HUNGARIAN;
 import static by.ishangulyev.model.ModelFieldValue.INDONESIAN;
 import static by.ishangulyev.model.ModelFieldValue.JAPANESE;
+import static by.ishangulyev.model.ModelFieldValue.KAZAKHSTAN;
+import static by.ishangulyev.model.ModelFieldValue.KYRGYZSTAN;
 import static by.ishangulyev.model.ModelFieldValue.MALE;
+import static by.ishangulyev.model.ModelFieldValue.MONGOLIA;
 import static by.ishangulyev.model.ModelFieldValue.OCEANIA;
+import static by.ishangulyev.model.ModelFieldValue.RUSSIA;
+import static by.ishangulyev.model.ModelFieldValue.TURKMENISTAN;
+import static by.ishangulyev.model.ModelFieldValue.UZBEKISTAN;
 
 public class Main {
     private static Comparator<Flower> FLOWER_SORT = Comparator.comparing(Flower::getOrigin)
@@ -195,12 +201,12 @@ public class Main {
         List<Car> cars = Util.getCars();
         Map<String,Double> countryCars = new HashMap<>();
 
-        countryCars.put("Turkmenistan",excludeMassCost(cars, CarValidator::isValidToTurkmenistan));
-        countryCars.put("Uzbekistan", excludeMassCost(cars, CarValidator::isValidToUzbekistan));
-        countryCars.put("Kazakhstan", excludeMassCost(cars, CarValidator::isValidToKazakhstan));
-        countryCars.put("Kyrgyzstan", excludeMassCost(cars, CarValidator::isValidToKyrgyzstan));
-        countryCars.put("Russia", excludeMassCost(cars, CarValidator::isValidToRussia));
-        countryCars.put("Mongolia", excludeMassCost(cars, CarValidator::isValidToMongolia));
+        countryCars.put(TURKMENISTAN,excludeMassCost(cars, CarValidator::isValidToTurkmenistan));
+        countryCars.put(UZBEKISTAN, excludeMassCost(cars, CarValidator::isValidToUzbekistan));
+        countryCars.put(KAZAKHSTAN, excludeMassCost(cars, CarValidator::isValidToKazakhstan));
+        countryCars.put(KYRGYZSTAN, excludeMassCost(cars, CarValidator::isValidToKyrgyzstan));
+        countryCars.put(RUSSIA, excludeMassCost(cars, CarValidator::isValidToRussia));
+        countryCars.put(MONGOLIA, excludeMassCost(cars, CarValidator::isValidToMongolia));
 
         countryCars.forEach((key, value) -> System.out.println(key + ": " + value));
         System.out.println(

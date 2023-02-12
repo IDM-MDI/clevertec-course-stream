@@ -2,13 +2,23 @@ package by.ishangulyev.model;
 
 public class ModelFieldValue {
     private ModelFieldValue() {}
+    //Gender
     public static final String MALE = "Male";
     public static final String FEMALE = "Female";
+    //Country
     public static final String OCEANIA = "Oceania";
     public static final String HUNGARIAN = "Hungarian";
     public static final String JAPANESE = "Japanese";
     public static final String INDONESIAN = "Indonesian";
+    public static final String TURKMENISTAN = "Turkmenistan";
+    public static final String UZBEKISTAN = "Uzbekistan";
+    public static final String KAZAKHSTAN = "Kazakhstan";
+    public static final String KYRGYZSTAN = "Kyrgyzstan";
+    public static final String RUSSIA = "Russia";
+    public static final String MONGOLIA = "Mongolia";
+    //BuildType
     public static final String HOSPITAL = "Hospital";
+    //Car model
     public static final String JAGUAR = "Jaguar";
     public static final String BMW = "BMW";
     public static final String LEXUS = "Lexus";
@@ -18,6 +28,7 @@ public class ModelFieldValue {
     public static final String DODGE = "Dodge";
     public static final String CHEROKEE = "Cherokee";
     public static final String CIVIC = "Civic";
+    //Colors
     public static final String WHITE = "White";
     public static final String BLACK = "Black";
     public static final String YELLOW = "Yellow";
