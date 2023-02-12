@@ -24,4 +24,7 @@ public class ModelFieldValue {
     public static final String RED = "Red";
     public static final String GREEN = "Green";
     public static final String BLUE = "Blue";
+    public static final String GLASS = "Glass";
+    public static final String ALUMINUM = "Aluminum";
+    public static final String STEEL = "Steel";
 }

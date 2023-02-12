@@ -5,9 +5,11 @@ import by.sologub.model.Car;
 import by.sologub.model.Flower;
 import by.sologub.model.House;
 import by.sologub.model.Person;
+import by.sologub.util.FlowerCalculator;
 import by.sologub.util.Util;
 import by.sologub.validator.AgeValidator;
 import by.sologub.validator.CarValidator;
+import by.sologub.validator.FlowerValidator;
 
 import java.io.IOException;
 import java.rmi.NoSuchObjectException;
@@ -27,6 +29,11 @@ import static by.sologub.model.ModelFieldValue.MALE;
 import static by.sologub.model.ModelFieldValue.OCEANIA;
 
 public class Main {
+    private static Comparator<Flower> FLOWER_SORT = Comparator.comparing(Flower::getOrigin)
+            .reversed()
+            .thenComparing(Flower::getPrice)
+            .thenComparing(Flower::getWaterConsumptionPerDay)
+            .reversed();
     public static void main(String[] args) throws IOException {
         task1();
         task2();
@@ -204,8 +211,16 @@ public class Main {
     }
 
     private static void task15() throws IOException {
-        List<Flower> flowers = Util.getFlowers();
-        //        Продолжить...
+        System.out.println("Task 15 started");
+        double totalSum = Util.getFlowers()
+                .stream()
+                .sorted(FLOWER_SORT)
+                .filter(FlowerValidator::isFlowerNameValid)
+                .filter(FlowerValidator::isShadePreferredFlowerValid)
+                .peek(flower -> System.out.println(flower.getCommonName() + ": " + FlowerCalculator.flowerCostCalculator(flower)))
+                .mapToDouble(FlowerCalculator::flowerCostCalculator)
+                .sum();
+        System.out.println(totalSum);
     }
 
     private static double excludeMassCost(List<Car> cars, Predicate<Car> predicate) {
