@@ -194,6 +194,7 @@ public class Main {
         countryCars.put("Kyrgyzstan", excludeMassCost(cars, CarValidator::isValidToKyrgyzstan));
         countryCars.put("Russia", excludeMassCost(cars, CarValidator::isValidToRussia));
         countryCars.put("Mongolia", excludeMassCost(cars, CarValidator::isValidToMongolia));
+
         countryCars.forEach((key, value) -> System.out.println(key + ": " + value));
         System.out.println(
                 "Total sum of the logistic company: " + countryCars.values().stream()
