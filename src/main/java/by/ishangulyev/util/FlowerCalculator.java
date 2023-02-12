@@ -1,10 +1,10 @@
-package by.sologub.util;
+package by.ishangulyev.util;
 
-import by.sologub.model.Flower;
+import by.ishangulyev.model.Flower;
 
 import java.util.Objects;
 
-import static by.sologub.util.DateCalculator.getDayByYearAgo;
+import static by.ishangulyev.util.DateCalculator.getDayByYearAgo;
 
 public class FlowerCalculator {
     private FlowerCalculator() {}

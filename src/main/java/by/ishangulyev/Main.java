@@ -1,15 +1,15 @@
-package by.sologub;
+package by.ishangulyev;
 
-import by.sologub.model.Animal;
-import by.sologub.model.Car;
-import by.sologub.model.Flower;
-import by.sologub.model.House;
-import by.sologub.model.Person;
-import by.sologub.util.FlowerCalculator;
-import by.sologub.util.Util;
-import by.sologub.validator.AgeValidator;
-import by.sologub.validator.CarValidator;
-import by.sologub.validator.FlowerValidator;
+import by.ishangulyev.model.Animal;
+import by.ishangulyev.model.Car;
+import by.ishangulyev.model.Flower;
+import by.ishangulyev.model.House;
+import by.ishangulyev.model.Person;
+import by.ishangulyev.util.FlowerCalculator;
+import by.ishangulyev.util.Util;
+import by.ishangulyev.validator.AgeValidator;
+import by.ishangulyev.validator.CarValidator;
+import by.ishangulyev.validator.FlowerValidator;
 
 import java.io.IOException;
 import java.rmi.NoSuchObjectException;
@@ -20,13 +20,13 @@ import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-import static by.sologub.model.ModelFieldValue.FEMALE;
-import static by.sologub.model.ModelFieldValue.HOSPITAL;
-import static by.sologub.model.ModelFieldValue.HUNGARIAN;
-import static by.sologub.model.ModelFieldValue.INDONESIAN;
-import static by.sologub.model.ModelFieldValue.JAPANESE;
-import static by.sologub.model.ModelFieldValue.MALE;
-import static by.sologub.model.ModelFieldValue.OCEANIA;
+import static by.ishangulyev.model.ModelFieldValue.FEMALE;
+import static by.ishangulyev.model.ModelFieldValue.HOSPITAL;
+import static by.ishangulyev.model.ModelFieldValue.HUNGARIAN;
+import static by.ishangulyev.model.ModelFieldValue.INDONESIAN;
+import static by.ishangulyev.model.ModelFieldValue.JAPANESE;
+import static by.ishangulyev.model.ModelFieldValue.MALE;
+import static by.ishangulyev.model.ModelFieldValue.OCEANIA;
 
 public class Main {
     private static Comparator<Flower> FLOWER_SORT = Comparator.comparing(Flower::getOrigin)

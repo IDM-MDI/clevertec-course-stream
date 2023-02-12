@@ -1,25 +1,25 @@
-package by.sologub.validator;
+package by.ishangulyev.validator;
 
-import by.sologub.model.Car;
+import by.ishangulyev.model.Car;
 
 import java.util.List;
 import java.util.Objects;
 
-import static by.sologub.model.ModelFieldValue.BLACK;
-import static by.sologub.model.ModelFieldValue.BLUE;
-import static by.sologub.model.ModelFieldValue.BMW;
-import static by.sologub.model.ModelFieldValue.CHEROKEE;
-import static by.sologub.model.ModelFieldValue.CHRYSLER;
-import static by.sologub.model.ModelFieldValue.CIVIC;
-import static by.sologub.model.ModelFieldValue.DODGE;
-import static by.sologub.model.ModelFieldValue.GMC;
-import static by.sologub.model.ModelFieldValue.GREEN;
-import static by.sologub.model.ModelFieldValue.JAGUAR;
-import static by.sologub.model.ModelFieldValue.LEXUS;
-import static by.sologub.model.ModelFieldValue.RED;
-import static by.sologub.model.ModelFieldValue.TOYOTA;
-import static by.sologub.model.ModelFieldValue.WHITE;
-import static by.sologub.model.ModelFieldValue.YELLOW;
+import static by.ishangulyev.model.ModelFieldValue.BLACK;
+import static by.ishangulyev.model.ModelFieldValue.BLUE;
+import static by.ishangulyev.model.ModelFieldValue.BMW;
+import static by.ishangulyev.model.ModelFieldValue.CHEROKEE;
+import static by.ishangulyev.model.ModelFieldValue.CHRYSLER;
+import static by.ishangulyev.model.ModelFieldValue.CIVIC;
+import static by.ishangulyev.model.ModelFieldValue.DODGE;
+import static by.ishangulyev.model.ModelFieldValue.GMC;
+import static by.ishangulyev.model.ModelFieldValue.GREEN;
+import static by.ishangulyev.model.ModelFieldValue.JAGUAR;
+import static by.ishangulyev.model.ModelFieldValue.LEXUS;
+import static by.ishangulyev.model.ModelFieldValue.RED;
+import static by.ishangulyev.model.ModelFieldValue.TOYOTA;
+import static by.ishangulyev.model.ModelFieldValue.WHITE;
+import static by.ishangulyev.model.ModelFieldValue.YELLOW;
 
 public class CarValidator {
     private static final List<String> UZBEKISTAN_CAR_MODELS = List.of(BMW, LEXUS, CHRYSLER, TOYOTA);

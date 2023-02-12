@@ -1,13 +1,13 @@
-package by.sologub.validator;
+package by.ishangulyev.validator;
 
-import by.sologub.model.Flower;
+import by.ishangulyev.model.Flower;
 
 import java.util.List;
 import java.util.Objects;
 
-import static by.sologub.model.ModelFieldValue.ALUMINUM;
-import static by.sologub.model.ModelFieldValue.GLASS;
-import static by.sologub.model.ModelFieldValue.STEEL;
+import static by.ishangulyev.model.ModelFieldValue.ALUMINUM;
+import static by.ishangulyev.model.ModelFieldValue.GLASS;
+import static by.ishangulyev.model.ModelFieldValue.STEEL;
 
 public class FlowerValidator {
     private static final List<String> SHADE_PREFERRED_VASE_MATERIAL = List.of(GLASS,ALUMINUM,STEEL);
