@@ -7,20 +7,24 @@ import by.sologub.model.House;
 import by.sologub.model.Person;
 import by.sologub.util.Util;
 import by.sologub.validator.AgeValidator;
+import by.sologub.validator.CarValidator;
 
 import java.io.IOException;
 import java.rmi.NoSuchObjectException;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-import static by.sologub.model.ModelFieldName.FEMALE;
-import static by.sologub.model.ModelFieldName.HOSPITAL;
-import static by.sologub.model.ModelFieldName.HUNGARIAN;
-import static by.sologub.model.ModelFieldName.INDONESIAN;
-import static by.sologub.model.ModelFieldName.JAPANESE;
-import static by.sologub.model.ModelFieldName.MALE;
-import static by.sologub.model.ModelFieldName.OCEANIA;
+import static by.sologub.model.ModelFieldValue.FEMALE;
+import static by.sologub.model.ModelFieldValue.HOSPITAL;
+import static by.sologub.model.ModelFieldValue.HUNGARIAN;
+import static by.sologub.model.ModelFieldValue.INDONESIAN;
+import static by.sologub.model.ModelFieldValue.JAPANESE;
+import static by.sologub.model.ModelFieldValue.MALE;
+import static by.sologub.model.ModelFieldValue.OCEANIA;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -162,26 +166,55 @@ public class Main {
     private static void task13() throws IOException {
         System.out.println("Task 13 started");
         List<House> houses = Util.getHouses();
+
         Stream<Person> hospitalStream = houses
                 .stream()
                 .filter(house -> house.getBuildingType().equals(HOSPITAL))
                 .flatMap(house -> house.getPersonList().stream());
+
         Stream<Person> otherStream = houses.stream()
                 .filter(house -> !house.getBuildingType().equals(HOSPITAL))
                 .flatMap(house -> house.getPersonList().stream())
                 .filter(AgeValidator::isPersonEvacuationValid);
+
         Stream.concat(hospitalStream,otherStream)
                 .limit(500)
                 .forEach(System.out::println);
     }
 
     private static void task14() throws IOException {
+        System.out.println("Task 14 started");
+
         List<Car> cars = Util.getCars();
-        //        Продолжить...
+        Map<String,Double> countryCars = new HashMap<>();
+
+        countryCars.put("Turkmenistan",excludeMassCost(cars, CarValidator::isValidToTurkmenistan));
+        countryCars.put("Uzbekistan", excludeMassCost(cars, CarValidator::isValidToUzbekistan));
+        countryCars.put("Kazakhstan", excludeMassCost(cars, CarValidator::isValidToKazakhstan));
+        countryCars.put("Kyrgyzstan", excludeMassCost(cars, CarValidator::isValidToKyrgyzstan));
+        countryCars.put("Russia", excludeMassCost(cars, CarValidator::isValidToRussia));
+        countryCars.put("Mongolia", excludeMassCost(cars, CarValidator::isValidToMongolia));
+
+        countryCars.forEach((key, value) -> System.out.println(key + ": " + value));
+        System.out.println(
+                "Total sum of the logistic company: " + countryCars.values().stream()
+                        .mapToDouble(v -> v)
+                        .sum()
+        );
     }
 
     private static void task15() throws IOException {
         List<Flower> flowers = Util.getFlowers();
         //        Продолжить...
+    }
+
+    private static double excludeMassCost(List<Car> cars, Predicate<Car> predicate) {
+        List<Car> result = cars.stream()
+                .filter(predicate)
+                .toList();
+        cars.removeAll(result);
+        return result.stream()
+                .mapToDouble(Car::getMass)
+                .sum() * 7.14;
     }
 }
