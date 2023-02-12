@@ -1,6 +1,5 @@
-package by.sologub.util;
+package by.ishangulyev.util;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;

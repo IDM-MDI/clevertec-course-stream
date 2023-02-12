@@ -1,12 +1,12 @@
-package by.sologub.validator;
+package by.ishangulyev.validator;
 
-import by.sologub.model.Person;
-import by.sologub.util.DateCalculator;
+import by.ishangulyev.model.Person;
+import by.ishangulyev.util.DateCalculator;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
-import static by.sologub.model.ModelFieldValue.FEMALE;
+import static by.ishangulyev.model.ModelFieldValue.FEMALE;
 
 public class AgeValidator {
     private AgeValidator() {}

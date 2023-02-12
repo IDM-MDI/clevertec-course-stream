@@ -1,10 +1,10 @@
-package by.sologub.util;
+package by.ishangulyev.util;
 
-import by.sologub.model.Animal;
-import by.sologub.model.Car;
-import by.sologub.model.Flower;
-import by.sologub.model.House;
-import by.sologub.model.Person;
+import by.ishangulyev.model.Animal;
+import by.ishangulyev.model.Car;
+import by.ishangulyev.model.Flower;
+import by.ishangulyev.model.House;
+import by.ishangulyev.model.Person;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
