@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static by.ishangulyev.model.ModelFieldValue.FEMALE;
@@ -51,6 +52,7 @@ public class Main {
         task13();
         task14();
         task15();
+        task16();
     }
 
     private static void task1() throws IOException {
@@ -229,7 +231,25 @@ public class Main {
                 .sum();
         System.out.println(totalSum);
     }
-
+    private static void task16() throws IOException {
+        System.out.println("Task 16 started");
+        List<Animal> filteredAnimals = Util.getAnimals()
+                .stream()
+                .filter(animal -> animal.getAge() < 30)
+                .toList();
+        Map<String, Double> avgByOrigin = filteredAnimals.stream()
+                .collect(Collectors.groupingBy(Animal::getOrigin, Collectors.averagingInt(Animal::getAge)));
+        avgByOrigin.forEach((k,v) -> System.out.println(k + ": " + v));
+        double oldestAvg = avgByOrigin
+                .values()
+                .stream()
+                .mapToDouble(Double::doubleValue)
+                .sum();
+        avgByOrigin.entrySet()
+                .stream()
+                .filter(entry -> entry.getValue().equals(oldestAvg))
+                .forEach(System.out::println);
+    }
     private static double excludeMassCost(List<Car> cars, Predicate<Car> predicate) {
         List<Car> result = cars.stream()
                 .filter(predicate)
