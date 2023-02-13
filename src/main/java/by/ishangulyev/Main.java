@@ -35,11 +35,6 @@ import static by.ishangulyev.model.ModelFieldValue.TURKMENISTAN;
 import static by.ishangulyev.model.ModelFieldValue.UZBEKISTAN;
 
 public class Main {
-    private static Comparator<Flower> FLOWER_SORT = Comparator.comparing(Flower::getOrigin)
-            .reversed()
-            .thenComparing(Flower::getPrice)
-            .thenComparing(Flower::getWaterConsumptionPerDay)
-            .reversed();
     public static void main(String[] args) throws IOException {
         task1();
         task2();
@@ -62,10 +57,10 @@ public class Main {
         System.out.println("Task 1 started");
         Util.getAnimals()
                 .stream()
-                .filter(i -> i.getAge() > 10 && i.getAge() < 20)
+                .filter(animal -> animal.getAge() > 10 && animal.getAge() < 20)
                 .sorted(Comparator.comparing(Animal::getAge).reversed())
-                .toList()
-                .subList(14,21)
+                .skip(2 * 7)
+                .limit(7)
                 .forEach(System.out::println);
     }
 
@@ -73,7 +68,7 @@ public class Main {
         System.out.println("Task 2 started");
         Util.getAnimals()
                 .stream()
-                .filter(i -> i.getOrigin().equals(JAPANESE))
+                .filter(animal -> JAPANESE.equals(animal.getOrigin()))
                 .map(Animal::getBread)
                 .map(String::toUpperCase)
                 .forEach(System.out::println);
@@ -95,7 +90,7 @@ public class Main {
         System.out.println(
                 Util.getAnimals()
                 .stream()
-                .filter(animal -> animal.getGender().equals(FEMALE))
+                .filter(animal -> FEMALE.equals(animal.getGender()))
                 .count()
         );
     }
@@ -105,7 +100,7 @@ public class Main {
         boolean result = Util.getAnimals()
                 .stream()
                 .filter(animal -> animal.getAge() >= 20 && animal.getAge() <= 30)
-                .anyMatch(animal -> animal.getOrigin().equals(HUNGARIAN));
+                .anyMatch(animal -> HUNGARIAN.equals(animal.getOrigin()));
         System.out.println(result);
     }
 
@@ -113,7 +108,7 @@ public class Main {
         System.out.println("Task 6 started");
         boolean result = Util.getAnimals()
                 .stream()
-                .allMatch(animal -> animal.getGender().equals(MALE) || animal.getGender().equals(FEMALE));
+                .allMatch(animal -> MALE.equals(animal.getGender()) || FEMALE.equals(animal.getGender()));
         System.out.println(result);
     }
 
@@ -121,7 +116,7 @@ public class Main {
         System.out.println("Task 7 started");
         boolean result = Util.getAnimals()
                 .stream()
-                .noneMatch(animal -> animal.getOrigin().equals(OCEANIA));
+                .noneMatch(animal -> OCEANIA.equals(animal.getOrigin()));
         System.out.println(result);
     }
 
@@ -159,7 +154,7 @@ public class Main {
         System.out.println("Task 11 started");
         Util.getAnimals()
                 .stream()
-                .filter(animal -> animal.getOrigin().equals(INDONESIAN))
+                .filter(animal -> INDONESIAN.equals(animal.getOrigin()))
                 .mapToInt(Animal::getAge)
                 .average()
                 .ifPresent(System.out::println);
@@ -169,7 +164,7 @@ public class Main {
         System.out.println("Task 12 started");
         Util.getPersons()
                 .stream()
-                .filter(person -> person.getGender().equals(MALE))
+                .filter(person -> MALE.equals(person.getGender()))
                 .filter(person -> AgeValidator.isAgeValidToFranceLegion(person.getDateOfBirth()))
                 .sorted(Comparator.comparing(Person::getRecruitmentGroup))
                 .limit(200)
@@ -182,11 +177,11 @@ public class Main {
 
         Stream<Person> hospitalStream = houses
                 .stream()
-                .filter(house -> house.getBuildingType().equals(HOSPITAL))
+                .filter(house -> HOSPITAL.equals(house.getBuildingType()))
                 .flatMap(house -> house.getPersonList().stream());
 
         Stream<Person> otherStream = houses.stream()
-                .filter(house -> !house.getBuildingType().equals(HOSPITAL))
+                .filter(house -> !HOSPITAL.equals(house.getBuildingType()))
                 .flatMap(house -> house.getPersonList().stream())
                 .filter(AgeValidator::isPersonEvacuationValid);
 
@@ -220,7 +215,13 @@ public class Main {
         System.out.println("Task 15 started");
         double totalSum = Util.getFlowers()
                 .stream()
-                .sorted(FLOWER_SORT)
+                .sorted(
+                        Comparator.comparing(Flower::getOrigin)
+                                .reversed()
+                                .thenComparing(Flower::getPrice)
+                                .thenComparing(Flower::getWaterConsumptionPerDay)
+                                .reversed()
+                )
                 .filter(FlowerValidator::isFlowerNameValid)
                 .filter(FlowerValidator::isShadePreferredFlowerValid)
                 .peek(flower -> System.out.println(flower.getCommonName() + ": " + FlowerCalculator.flowerCostCalculator(flower)))
