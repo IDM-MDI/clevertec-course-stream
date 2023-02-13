@@ -12,7 +12,6 @@ import static by.ishangulyev.model.ModelFieldValue.STEEL;
 public class FlowerValidator {
     private static final List<String> SHADE_PREFERRED_VASE_MATERIAL = List.of(GLASS,ALUMINUM,STEEL);
     private FlowerValidator() {}
-
     public static boolean isFlowerNameValid(Flower flower) {
         return Objects.nonNull(flower) && isFlowerFirstSymbolValid(flower.getCommonName().toLowerCase().charAt(0));
     }

@@ -26,7 +26,6 @@ public class CarValidator {
     private static final List<String> KAZAKHSTAN_CAR_MAKE = List.of(GMC, DODGE);
     private static final List<String> KYRGYZSTAN_CAR_MODELS = List.of(CIVIC, CHEROKEE);
     private static final List<String> RUSSIAN_CAR_COLOR = List.of(RED,GREEN,BLUE);
-
     private CarValidator() {}
 
     public static boolean isValidToTurkmenistan(Car car) {

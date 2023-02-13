@@ -18,7 +18,6 @@ public class AgeValidator {
     public static boolean isPersonEvacuationValid(Person person) {
         return !isPersonAdult(person) || isPersonPensionAge(person);
     }
-
     public static boolean isPersonPensionAge(Person person) {
         if(Objects.isNull(person)) {
             return false;
