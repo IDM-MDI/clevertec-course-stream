@@ -1,15 +1,14 @@
-package by.sologub.util;
+package by.ishangulyev.util;
 
-import by.sologub.model.Animal;
-import by.sologub.model.Car;
-import by.sologub.model.Flower;
-import by.sologub.model.House;
-import by.sologub.model.Person;
+import by.ishangulyev.model.Animal;
+import by.ishangulyev.model.Car;
+import by.ishangulyev.model.Flower;
+import by.ishangulyev.model.House;
+import by.ishangulyev.model.Person;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JSR310Module;
-import lombok.SneakyThrows;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.File;
 import java.io.IOException;
@@ -66,7 +65,7 @@ public class Util {
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         mapper.setDateFormat(df);
         mapper.setLocale(Locale.ENGLISH);
-        mapper.registerModule(new JSR310Module());
+        mapper.registerModule(new JavaTimeModule());
         return mapper;
     }
 }
